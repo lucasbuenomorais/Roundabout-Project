@@ -1,0 +1,34 @@
+/*
+    roundabout_project - JaCaMo
+*/
+
+mas roundabout {
+	
+	 agent carA{
+    	focus: wsp_roundabout.teste    	
+    }
+
+    agent roundabout_exits{
+    	focus: wsp_roundabout.teste    	
+    }
+      
+    workspace wsp_roundabout{
+    	artifact teste : tools.KeyExitsArt
+    }
+        
+    organisation ora4mas : exits.xml {
+    	
+        group ext_group: exits_group {
+        	responsible-for: esch        	
+            debug: inspector_gui(on)
+            players: roundabout_exits roundabout_controller
+            players: carA carA
+            players: carB carA
+            //players: teste roundabout_controller
+        }
+        
+        scheme esch: play_roundabout{
+           //debug: inspector_gui(on)
+      }        
+    }
+  }
