@@ -1,0 +1,74 @@
+//This is the organizational code for the roundabout and each one of the agents (Moise)
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="http://moise.sourceforge.net/xml/os.xsl" type="text/xsl" ?>
+
+<organisational-specification
+    id="play_roundabout"
+    os-version="0.8"
+
+    xmlns='http://moise.sourceforge.net/os'
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xsi:schemaLocation='http://moise.sourceforge.net/os
+                        http://moise.sourceforge.net/xml/os.xsd' >
+
+<structural-specification>
+
+<role-definitions>
+    <role id="roundabout_controller" />
+    <role id="cars" />
+    <role id="carA" > 		<extends role="cars"/>  </role>
+    <role id="police" >     <extends role="cars"/>  </role>
+</role-definitions>
+
+<group-specification id="exits_group">
+    <roles>
+        <role id="roundabout_controller" 		min="1" max="1"/>
+        <role id="carA" 				 		min="0" max="10"/>
+        <role id="police" 						min="0" max="10"/>
+    </roles>
+
+    <links>
+       <link from="roundabout_controller"  type="authority"  to="cars"   	scope="intra-group" bi-dir="false"/>
+       <link from="cars"  type="communication"  to="roundabout_controller"  scope="intra-group" bi-dir="false"/>
+    </links>
+    
+    <formation-constraints>
+       <compatibility from="cars"  to="cars"  scope="intra-group" />
+    </formation-constraints>
+    
+	</group-specification>
+	</structural-specification>
+
+<functional-specification>
+    <scheme id="play_roundabout">
+        <goal id="movementation">
+            <plan operator="parallel">
+                <goal id="carA_moves"    			ttf="20 minutes" ds="The car start moving"/>
+                <goal id="police_moves"				ttf="10 minutes" />
+            </plan>
+        </goal>
+
+        <mission id="management_of_the_roundabout" min="1" max="1">
+            <goal id="movementation"/>
+        </mission>
+        
+        <mission id="mission_A" min="1" max="40">
+     		<goal id="carA_moves" />
+   		</mission>
+        
+        <mission id="mission_police" min="1" max="40">
+     		<goal id="police_moves" />
+   		</mission>  		  
+   
+    </scheme>
+</functional-specification>
+
+<normative-specification>
+<norm id="n1"     type="obligation"    role="roundabout_controller"     mission="management_of_the_roundabout"   time-constraint="2 minutes" />
+<norm id="n2"     type="obligation"    role="carA" 						mission="mission_A" />
+<norm id="n3"     type="obligation"    role="police"            		mission="mission_police" />
+</normative-specification>
+
+</organisational-specification>
