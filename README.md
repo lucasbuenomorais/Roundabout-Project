@@ -7,9 +7,7 @@ JaCaMo is a framework for Multi-Agent Programming that combines three separate t
 JaCaMo is a combination of:
 
 Jason – for programming autonomous agents
-
 Cartago – for programming environment artifacts
-
 Moise – for programming multi-agent organisations
 
 thus covering all levels of abstractions that are required for the development of sophisticated multi-agent systems.
