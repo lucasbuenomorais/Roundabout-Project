@@ -1,4 +1,4 @@
-# Rundabout-Project
+# Roundabout - Project
 Development of a Roundabout using JaCaMo.
 
 # JaCaMo
