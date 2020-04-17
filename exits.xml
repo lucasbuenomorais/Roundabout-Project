@@ -19,19 +19,19 @@
     <role id="roundabout_controller" />
     <role id="cars" />
     <role id="carA" > 		<extends role="cars"/>  </role>
-    <role id="police" >     <extends role="cars"/>  </role>
+    <role id="police" >     	<extends role="cars"/>  </role>
 </role-definitions>
 
 <group-specification id="exits_group">
     <roles>
-        <role id="roundabout_controller" 		min="1" max="1"/>
+        <role id="roundabout_controller" 				min="1" max="1"/>
         <role id="carA" 				 		min="0" max="10"/>
         <role id="police" 						min="0" max="10"/>
     </roles>
 
     <links>
        <link from="roundabout_controller"  type="authority"  to="cars"   	scope="intra-group" bi-dir="false"/>
-       <link from="cars"  type="communication"  to="roundabout_controller"  scope="intra-group" bi-dir="false"/>
+       <link from="cars"  type="communication"  to="roundabout_controller"  	scope="intra-group" bi-dir="false"/>
     </links>
     
     <formation-constraints>
@@ -51,8 +51,8 @@
         </goal>
 
         <mission id="management_of_the_roundabout" min="1" max="1">
-            <goal id="movementation"/>
-        </mission>
+            	<goal id="movementation"/>
+       		</mission>
         
         <mission id="mission_A" min="1" max="40">
      		<goal id="carA_moves" />
@@ -67,8 +67,8 @@
 
 <normative-specification>
 <norm id="n1"     type="obligation"    role="roundabout_controller"     mission="management_of_the_roundabout"   time-constraint="2 minutes" />
-<norm id="n2"     type="obligation"    role="carA" 						mission="mission_A" />
-<norm id="n3"     type="obligation"    role="police"            		mission="mission_police" />
+<norm id="n2"     type="obligation"    role="carA" 			mission="mission_A" />
+<norm id="n3"     type="obligation"    role="police"            	mission="mission_police" />
 </normative-specification>
 
 </organisational-specification>
