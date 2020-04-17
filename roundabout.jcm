@@ -1,5 +1,7 @@
 /*
     roundabout_project - JaCaMo
+    
+    In this code we present the agents, the criation of the environment and the initial organisation  
 */
 
 mas roundabout {
